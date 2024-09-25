@@ -11,20 +11,19 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["JdmMarketplace.API/JdmMarketplace.Services.CatalogAPI.csproj", "JdmMarketplace.API/"]
-COPY ["JdmMarketplace.Services.CatalogDomain/JdmMarketplace.Services.CatalogDomain.csproj", "JdmMarketplace.Services.CatalogDomain/"]
-RUN dotnet restore "./JdmMarketplace.API/JdmMarketplace.Services.CatalogAPI.csproj"
+COPY ["JdmMarketplace.API/JdmMarketplace.API.csproj", "JdmMarketplace.API/"]
+RUN dotnet restore "./JdmMarketplace.API/JdmMarketplace.API.csproj"
 COPY . .
 WORKDIR "/src/JdmMarketplace.API"
-RUN dotnet build "./JdmMarketplace.Services.CatalogAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./JdmMarketplace.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./JdmMarketplace.Services.CatalogAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./JdmMarketplace.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Этот этап используется в рабочей среде или при запуске из VS в обычном режиме (по умолчанию, когда конфигурация отладки не используется)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "JdmMarketplace.Services.CatalogAPI.dll"]
+ENTRYPOINT ["dotnet", "JdmMarketplace.API.dll"]

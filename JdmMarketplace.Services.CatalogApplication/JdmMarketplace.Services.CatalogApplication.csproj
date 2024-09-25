@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JdmMarketplace.Services.CatalogData\JdmMarketplace.Services.CatalogData.csproj" />
     <ProjectReference Include="..\JdmMarketplace.Services.CatalogDomain\JdmMarketplace.Services.CatalogDomain.csproj" />
   </ItemGroup>
 

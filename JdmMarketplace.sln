@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JdmMarketplace.Services.CatalogAPI", "JdmMarketplace.API\JdmMarketplace.Services.CatalogAPI.csproj", "{0040F915-1A9B-4929-AFE0-B6A3F549DC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JdmMarketplace.Services.CatalogAPI", "JdmMarketplace.API\JdmMarketplace.Services.CatalogAPI.csproj", "{0040F915-1A9B-4929-AFE0-B6A3F549DC83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{E7E735AD-282F-4122-A3B2-C42864F7E0C1}"
 EndProject
@@ -11,13 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{F6C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{952E6AA3-1BF2-4E26-B64E-942886E2BCD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JdmMarketplace.Services.CatalogData", "JdmMarketplace.Services.CatalogData\JdmMarketplace.Services.CatalogData.csproj", "{4A5FC222-0E52-4590-9EA4-DD5D091227F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JdmMarketplace.Services.CatalogData", "JdmMarketplace.Services.CatalogData\JdmMarketplace.Services.CatalogData.csproj", "{4A5FC222-0E52-4590-9EA4-DD5D091227F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JdmMarketplace.Services.CatalogApplication", "JdmMarketplace.Services.CatalogApplication\JdmMarketplace.Services.CatalogApplication.csproj", "{D2C98AF8-D327-4158-A36F-BF8DB5757487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JdmMarketplace.Services.CatalogApplication", "JdmMarketplace.Services.CatalogApplication\JdmMarketplace.Services.CatalogApplication.csproj", "{D2C98AF8-D327-4158-A36F-BF8DB5757487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JdmMarketplace.Services.CatalogDomain", "JdmMarketplace.Services.CatalogDomain\JdmMarketplace.Services.CatalogDomain.csproj", "{A1C2A9C0-19EF-46FC-A45C-1CA78293EEE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JdmMarketplace.Services.CatalogDomain", "JdmMarketplace.Services.CatalogDomain\JdmMarketplace.Services.CatalogDomain.csproj", "{A1C2A9C0-19EF-46FC-A45C-1CA78293EEE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogAPI", "CatalogAPI", "{CA764EEB-1227-4081-9EF3-2B30E60CEA8A}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FE4FC647-1B50-4705-B47F-8B64A58C2C51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{A1C2A9C0-19EF-46FC-A45C-1CA78293EEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1C2A9C0-19EF-46FC-A45C-1CA78293EEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1C2A9C0-19EF-46FC-A45C-1CA78293EEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE4FC647-1B50-4705-B47F-8B64A58C2C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE4FC647-1B50-4705-B47F-8B64A58C2C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE4FC647-1B50-4705-B47F-8B64A58C2C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE4FC647-1B50-4705-B47F-8B64A58C2C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

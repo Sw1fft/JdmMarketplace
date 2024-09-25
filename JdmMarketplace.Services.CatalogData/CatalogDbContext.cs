@@ -1,4 +1,5 @@
-﻿using JdmMarketplace.Services.CatalogAPI.Models;
+﻿using JdmMarketplace.Services.CatalogData.Configurations;
+using JdmMarketplace.Services.CatalogData.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace JdmMarketplace.Services.CatalogData
@@ -8,10 +9,12 @@ namespace JdmMarketplace.Services.CatalogData
         public CatalogDbContext(DbContextOptions<CatalogDbContext> options)
             : base() { }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CatalogConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }
