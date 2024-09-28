@@ -1,0 +1,6 @@
+@JdmMarketplace.Services.AuthAPI_HostAddress = http://localhost:5200
+
+GET {{JdmMarketplace.Services.AuthAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
