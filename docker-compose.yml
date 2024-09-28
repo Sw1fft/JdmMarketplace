@@ -10,8 +10,8 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: db
-      POSTGRES_USER: postgres
+      POSTGRES_DB: catalogDb
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: "123"
     ports:
       - 5432:5432

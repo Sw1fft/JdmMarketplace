@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JdmMarketplace.Services.CatalogData.Configurations
 {
-    internal class CatalogConfiguration : IEntityTypeConfiguration<ProductEntity>
+    public class CatalogConfiguration : IEntityTypeConfiguration<ProductEntity>
     {
         public void Configure(EntityTypeBuilder<ProductEntity> builder)
         {

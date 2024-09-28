@@ -1,18 +1,21 @@
-using JdmMarketplace.Services.CatalogAPI.Mappings;
 using JdmMarketplace.Services.CatalogApplication.Mappings;
 using JdmMarketplace.Services.CatalogApplication.Services;
-using JdmMarketplace.Services.CatalogData;
 using JdmMarketplace.Services.CatalogDomain.Abstractions;
+using JdmMarketplace.Services.CatalogAPI.Mappings;
+using JdmMarketplace.Services.CatalogData;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddDbContext<CatalogDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(CatalogDbContext)));
+});
+
 builder.Services.AddAutoMapper(typeof(CatalogProfile));
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-builder.Services.AddDbContext<CatalogDbContext>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

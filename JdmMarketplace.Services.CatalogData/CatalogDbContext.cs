@@ -7,7 +7,7 @@ namespace JdmMarketplace.Services.CatalogData
     public class CatalogDbContext : DbContext
     {
         public CatalogDbContext(DbContextOptions<CatalogDbContext> options)
-            : base() { }
+            : base(options) { }
 
         public DbSet<ProductEntity> Products { get; set; }
 
