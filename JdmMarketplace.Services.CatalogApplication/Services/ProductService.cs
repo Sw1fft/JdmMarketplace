@@ -34,7 +34,8 @@ namespace JdmMarketplace.Services.CatalogApplication.Services
 
         public async Task<List<Product>> GetProducts()
         {
-            var list = await _dbContext.Products.ToListAsync();
+            var list = await _dbContext.Products
+                .ToListAsync();
 
             return _mapper.Map<List<Product>>(list);
         }

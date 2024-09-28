@@ -1,6 +1,6 @@
 ﻿using JdmMarketplace.Services.CatalogDomain.Models;
-using JdmMarketplace.Services.CatalogAPI.DTO;
 using AutoMapper;
+using JdmMarketplace.Services.CatalogAPI.DTO.Requests;
 
 namespace JdmMarketplace.Services.CatalogAPI.Mappings
 {
@@ -8,7 +8,7 @@ namespace JdmMarketplace.Services.CatalogAPI.Mappings
     {
         public CatalogProfile()
         {
-            CreateMap<RequestProductDTO, Product>().ReverseMap();
+            CreateMap<RequestDTO, Product>().ReverseMap();
         }
     }
 }
