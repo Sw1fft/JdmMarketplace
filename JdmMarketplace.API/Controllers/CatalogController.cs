@@ -33,30 +33,43 @@ namespace JdmMarketplace.Services.CatalogAPI.Controllers
         [HttpGet]
         public async Task<ResponseDTO> GetAll()
         {
-            var productsList = await _productService.GetProducts();
-
-            if (productsList != null)
+            try
             {
+                var productsList = await _productService.GetProducts();
+
                 _response.Result = productsList;
                 _response.IsSuccess = true;
                 _response.StatusCode = StatusCodes.Status200OK;
-
-                return _response;
             }
-
-            _response.ErrorMessage = "Error";
-            _response.StatusCode = StatusCodes.Status400BadRequest;
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = StatusCodes.Status400BadRequest;
+                _response.ErrorMessage = ex.Message;
+            }
 
             return _response;
         }
 
         [HttpGet]
         [Route("{id:guid}")]
-        public async Task<ActionResult> GetProductById(Guid id)
+        public async Task<ResponseDTO> GetProductById(Guid id)
         {
-            var product = await _productService.GetProductById(id);
+            try
+            {
+                var product = await _productService.GetProductById(id);
+                _response.Result = product;
+                _response.IsSuccess = true;
+                _response.StatusCode = StatusCodes.Status200OK;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = StatusCodes.Status400BadRequest;
+                _response.ErrorMessage = ex.Message;
+            }
 
-            return Ok(product);
+            return _response;
         }
     }
 }
