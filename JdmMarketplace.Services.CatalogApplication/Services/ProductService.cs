@@ -37,14 +37,19 @@ namespace JdmMarketplace.Services.CatalogApplication.Services
         public async Task<List<Product>> GetProducts()
         {
             var list = await _dbContext.Products
+                .AsNoTracking()
                 .ToListAsync();
 
             return _mapper.Map<List<Product>>(list);
         }
 
-        public Task<Product> GetProductById(Guid id)
+        public async Task<Product> GetProductById(Guid id)
         {
-            throw new NotImplementedException();
+            var productEntity = await _dbContext.Products
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            return _mapper.Map<Product>(productEntity);
         }
 
         public Task<Product> UpdateProduct(Guid id, Product product)
@@ -52,9 +57,12 @@ namespace JdmMarketplace.Services.CatalogApplication.Services
             throw new NotImplementedException();
         }
 
-        public Task DeleteProduct(Guid id)
+        public async Task DeleteProduct(Guid id)
         {
-            throw new NotImplementedException();
+            await _dbContext.Products
+                .AsNoTracking()
+                .Where(p => p.Id == id)
+                .ExecuteDeleteAsync();
         }
     }
 }
