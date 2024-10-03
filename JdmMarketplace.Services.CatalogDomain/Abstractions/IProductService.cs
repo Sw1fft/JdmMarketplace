@@ -8,7 +8,7 @@ namespace JdmMarketplace.Services.CatalogDomain.Abstractions
 
         public Task<Product> GetProductById(Guid id);
 
-        public Task AddNewProduct(Product product);
+        public Task<Product> AddNewProduct(Product product);
 
         public Task<Product> UpdateProduct(Guid id, Product product);
 

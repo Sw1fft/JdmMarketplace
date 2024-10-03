@@ -23,11 +23,22 @@ namespace JdmMarketplace.Services.CatalogAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateProduct([FromBody] RequestDTO request)
+        public async Task<ResponseDTO> CreateProduct([FromBody] RequestDTO request)
         {
-            await _productService.AddNewProduct(_mapper.Map<Product>(request));
+            try
+            {
+                _response.Result = await _productService.AddNewProduct(_mapper.Map<Product>(request));
+                _response.IsSuccess = true;
+                _response.StatusCode = StatusCodes.Status200OK;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessage = ex.Message;
+                _response.StatusCode = StatusCodes.Status400BadRequest;
+            }
 
-            return Ok();
+            return _response;
         }
 
         [HttpGet]
@@ -61,6 +72,46 @@ namespace JdmMarketplace.Services.CatalogAPI.Controllers
                 _response.Result = product;
                 _response.IsSuccess = true;
                 _response.StatusCode = StatusCodes.Status200OK;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = StatusCodes.Status400BadRequest;
+                _response.ErrorMessage = ex.Message;
+            }
+
+            return _response;
+        }
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public async Task<ResponseDTO> UpdateProduct(Guid id, [FromBody] Product product)
+        {
+            try
+            {
+                _response.Result = await _productService.UpdateProduct(id, product);
+                _response.IsSuccess = true;
+                _response.StatusCode = StatusCodes.Status200OK;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.StatusCode = StatusCodes.Status400BadRequest;
+                _response.ErrorMessage = ex.Message;
+            }
+
+            return _response;
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public async Task<ResponseDTO> DeleteProduct(Guid id)
+        {
+            try
+            {
+                await _productService.DeleteProduct(id);
+                _response.IsSuccess = true;
+                _response.StatusCode= StatusCodes.Status200OK;
             }
             catch (Exception ex)
             {

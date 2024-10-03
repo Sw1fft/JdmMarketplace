@@ -18,7 +18,7 @@ namespace JdmMarketplace.Services.CatalogApplication.Services
             _mapper = mapper;
         }
 
-        public async Task AddNewProduct(Product product)
+        public async Task<Product> AddNewProduct(Product product)
         {
             var entity = new ProductEntity
             {
@@ -30,6 +30,8 @@ namespace JdmMarketplace.Services.CatalogApplication.Services
 
             await _dbContext.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
+
+            return _mapper.Map<Product>(entity);
         }
 
         public async Task<List<Product>> GetProducts()
